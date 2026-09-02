@@ -1,3 +1,5 @@
+package ru.aston;
+
 public final class Car {
     private final int power;
     private final String model;
