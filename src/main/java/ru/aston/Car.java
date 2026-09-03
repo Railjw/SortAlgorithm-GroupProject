@@ -2,7 +2,7 @@ package ru.aston;
 
 import java.util.Objects;
 
-public final class Car implements Comparable<Car> {
+public final class Car {
     private final int power;
     private final String model;
     private final int productionYear;
