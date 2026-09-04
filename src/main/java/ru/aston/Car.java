@@ -1,5 +1,7 @@
 package ru.aston;
 
+import java.util.Objects;
+
 public final class Car {
     private final int power;
     private final String model;
@@ -31,6 +33,27 @@ public final class Car {
 
     public int getProductionYear() {
         return productionYear;
+    }
+    
+    @Override
+    public boolean equals (Object testCarOrNot) {
+        if (this == testCarOrNot)
+            return true;
+        
+        if (testCarOrNot == null || this.getClass() != testCarOrNot.getClass())
+            return false;
+        
+        Car testCar = (Car)testCarOrNot;
+        boolean carsAreSame = Objects.equals(this.getModel(), testCar.getModel()) && 
+                this.getPower()== testCar.getPower() &&
+                this.getProductionYear()== testCar.getProductionYear();
+        
+        return carsAreSame;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getModel(), Integer.toString(this.getPower()), Integer.toString(this.getProductionYear()));
     }
 
     public static final class Builder {
