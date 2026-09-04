@@ -101,8 +101,6 @@ public final class Car {
                         "Production year cannot be earlier than " + MIN_PRODUCTION_YEAR
                 );
             }
-
-            //Я добавил, но оно нам надо? Я никому этим валидатором разработку не испорчу?
         }
     }
 }
