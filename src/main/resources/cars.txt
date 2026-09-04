@@ -1,0 +1,10 @@
+150,Lada Granta,2020
+200,BMW X5,2022
+95,Lada Vesta,2021
+180,Toyota Camry,2019
+450,Audi R8,2023
+320,BMW M5,2022
+150,Honda Civic,2021
+190,Toyota RAV4,2020
+250,Audi TT,2023
+120,Lada Iskra,2022
