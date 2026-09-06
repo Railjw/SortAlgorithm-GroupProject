@@ -1,6 +1,5 @@
 package ru.aston.extra;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.concurrent.Future;
@@ -12,11 +11,11 @@ import java.util.concurrent.ExecutionException;
 public class Task4 {
     static class PartialCounter implements Callable<Integer> {
         private final Object objToSearch;
-        private final List<Object> globalList;
+        private final List globalList;
         private final int startIndex;
         private final int nextChunkIndex;
         
-        public PartialCounter(List<Object> globalList, Object objToSearch, int startIndex, int nextChunkIndex) {
+        public PartialCounter(List globalList, Object objToSearch, int startIndex, int nextChunkIndex) {
             this.globalList = globalList;
             this.objToSearch = objToSearch;
             this.startIndex = startIndex;
