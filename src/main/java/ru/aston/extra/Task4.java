@@ -1,6 +1,5 @@
 package ru.aston.extra;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.concurrent.Future;
@@ -12,11 +11,11 @@ import java.util.concurrent.ExecutionException;
 public class Task4 {
     static class PartialCounter implements Callable<Integer> {
         private final Object objToSearch;
-        private final List<Object> globalList;
+        private final List globalList;
         private final int startIndex;
         private final int nextChunkIndex;
         
-        public PartialCounter(List<Object> globalList, Object objToSearch, int startIndex, int nextChunkIndex) {
+        public PartialCounter(List globalList, Object objToSearch, int startIndex, int nextChunkIndex) {
             this.globalList = globalList;
             this.objToSearch = objToSearch;
             this.startIndex = startIndex;
@@ -49,7 +48,7 @@ public class Task4 {
         }
         
         if (globalList.isEmpty()) {
-            System.out.println("Same objects count is 0.");
+            System.out.println("0");
             return;
         }
         
@@ -84,6 +83,6 @@ public class Task4 {
         
 	executor.shutdown();
         
-        System.out.println("Same objects count is " + finalCount);
+        System.out.println(finalCount);
     }    
 }

@@ -37,6 +37,10 @@ public class QuickSort implements SortStrategy {
     
     @Override
     public void sort(List<Car> arr, Comparator<Car> comparator) {
+        if (arr == null || arr.size() < 2 || comparator == null) {
+            return;
+        }
+        
         quickSort(arr, 0, arr.size() - 1, comparator);
     }
 }
