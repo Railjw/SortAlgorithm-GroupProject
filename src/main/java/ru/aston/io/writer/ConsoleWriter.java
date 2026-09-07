@@ -5,8 +5,8 @@ import ru.aston.CustomList;
 
 public class ConsoleWriter {
 
-    private static final String BORDER = "+-----+-------------------------------+----------+--------------------+";
-    private static final String HEADER = "|  #  | Model                         | Power    | Production Year    |";
+    private static final String BORDER = "----------------------------------------------------------";
+    private static final String HEADER = "|  №  | Model                | Power    | Production Year|";
 
     public static void print(CustomList<Car> cars) {
         print(cars, 0, cars.size());
