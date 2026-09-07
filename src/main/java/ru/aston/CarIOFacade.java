@@ -9,17 +9,17 @@ import ru.aston.io.generator.CarGenerator;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class CarInputOutput {
+public class CarIOFacade {
 
-    public static Car inputFromConsole(Scanner scanner) {
+    public static Car readFromConsole(Scanner scanner) {
         return ConsoleReader.readOne();
     }
 
-    public static CustomList<Car> inputMultipleFromConsole(Scanner scanner, int count) {
+    public static CustomList<Car> readMultipleFromConsole(Scanner scanner, int count) {
         return ConsoleReader.readMultiple(count);
     }
 
-    public static CustomList<Car> inputSingleFromConsole(Scanner scanner, int count) {
+    public static CustomList<Car> readOneByOneFromConsole(Scanner scanner, int count) {
         return ConsoleReader.readOneByOne(count);
     }
 
@@ -35,19 +35,19 @@ public class CarInputOutput {
         return CarGenerator.generate(count);
     }
 
-    public static void printAllCars(CustomList<Car> cars) {
+    public static void printAll(CustomList<Car> cars) {
         ConsoleWriter.printAll(cars);
     }
 
-    public static void printFirstCars(CustomList<Car> cars, int limit) {
+    public static void printFirst(CustomList<Car> cars, int limit) {
         ConsoleWriter.printFirst(cars, limit);
     }
 
-    public static void printCarsRange(CustomList<Car> cars, int startIndex, int endIndex) {
-        ConsoleWriter.printRange(cars, startIndex, endIndex);
+    public static void printRange(CustomList<Car> cars, int start, int end) {
+        ConsoleWriter.printRange(cars, start, end);
     }
 
-    public static void writeAllToFile(String fileName, CustomList<Car> cars) throws IOException {
+    public static void writeToFile(String fileName, CustomList<Car> cars) throws IOException {
         CarFileWriter.writeAll(fileName, cars);
     }
 
@@ -55,11 +55,11 @@ public class CarInputOutput {
         CarFileWriter.writeFirst(fileName, cars, limit);
     }
 
-    public static void writeRangeToFile(String fileName, CustomList<Car> cars, int startIndex, int endIndex) throws IOException {
-        CarFileWriter.writeRange(fileName, cars, startIndex, endIndex);
+    public static void writeRangeToFile(String fileName, CustomList<Car> cars, int start, int end) throws IOException {
+        CarFileWriter.writeRange(fileName, cars, start, end);
     }
 
-    public static void appendAllToFile(String fileName, CustomList<Car> cars, String comment) throws IOException {
+    public static void appendToFile(String fileName, CustomList<Car> cars, String comment) throws IOException {
         CarFileWriter.appendAll(fileName, cars, comment);
     }
 
@@ -67,7 +67,7 @@ public class CarInputOutput {
         CarFileWriter.appendFirst(fileName, cars, comment, limit);
     }
 
-    public static void appendRangeToFile(String fileName, CustomList<Car> cars, String comment, int startIndex, int endIndex) throws IOException {
-        CarFileWriter.appendRange(fileName, cars, comment, startIndex, endIndex);
+    public static void appendRangeToFile(String fileName, CustomList<Car> cars, String comment, int start, int end) throws IOException {
+        CarFileWriter.appendRange(fileName, cars, comment, start, end);
     }
 }
