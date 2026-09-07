@@ -48,7 +48,7 @@ public class Task4 {
         }
         
         if (globalList.isEmpty()) {
-            System.out.println("Same objects count is 0.");
+            System.out.println("0");
             return;
         }
         
@@ -83,6 +83,6 @@ public class Task4 {
         
 	executor.shutdown();
         
-        System.out.println("Same objects count is " + finalCount);
+        System.out.println(finalCount);
     }    
 }

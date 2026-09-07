@@ -55,6 +55,11 @@ public final class Car {
     public int hashCode() {
         return Objects.hash(this.getModel(), Integer.toString(this.getPower()), Integer.toString(this.getProductionYear()));
     }
+    
+    @Override
+    public String toString() {
+        return String.join(", ", this.getModel(), Integer.toString(this.getPower()), Integer.toString(this.getProductionYear()));
+    }
 
     public static final class Builder {
 
