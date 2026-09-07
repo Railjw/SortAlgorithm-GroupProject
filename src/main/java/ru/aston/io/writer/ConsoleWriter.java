@@ -3,22 +3,20 @@ package ru.aston.io.writer;
 import ru.aston.Car;
 import ru.aston.CustomList;
 
-import java.util.stream.IntStream;
-
 public class ConsoleWriter {
 
-    private static final String BORDER = "|-----------------------------------------------------|";
-    private static final String HEADER = "|  №  | Model               | Power  | Production Year|";
+    private static final String BORDER = "+-----+-------------------------------+----------+--------------------+";
+    private static final String HEADER = "|  #  | Model                         | Power    | Production Year    |";
 
-    public static void printAll(CustomList<Car> cars) {
-        printRange(cars, 0, cars.size());
+    public static void print(CustomList<Car> cars) {
+        print(cars, 0, cars.size());
     }
 
-    public static void printFirst(CustomList<Car> cars, int limit) {
-        printRange(cars, 0, Math.min(limit, cars.size()));
+    public static void print(CustomList<Car> cars, int limit) {
+        print(cars, 0, Math.min(limit, cars.size()));
     }
 
-    public static void printRange(CustomList<Car> cars, int startIndex, int endIndex) {
+    public static void print(CustomList<Car> cars, int startIndex, int endIndex) {
         if (cars.size() == 0) {
             System.out.println("Collection is empty.");
             return;
@@ -32,26 +30,18 @@ public class ConsoleWriter {
             return;
         }
 
-        printHeader();
-        IntStream.range(start, end)
-                .mapToObj(i -> formatCar(i + 1, cars.get(i)))
-                .forEach(System.out::println);
-        printFooter(end - start, cars.size(), start + 1, end);
-    }
-
-    private static void printHeader() {
         System.out.println(BORDER);
         System.out.println(HEADER);
         System.out.println(BORDER);
-    }
 
-    private static void printFooter(int shown, int total, int start, int end) {
+        for (int i = start; i < end; i++) {
+            Car car = cars.get(i);
+            System.out.printf("| %3d | %-29s | %8d | %18d |%n",
+                    i + 1, car.getModel(), car.getPower(), car.getProductionYear());
+        }
+
         System.out.println(BORDER);
-        System.out.printf("Showing: %d of %d cars (positions %d-%d)%n%n", shown, total, start, end);
-    }
-
-    private static String formatCar(int index, Car car) {
-        return String.format("| %3d | %-29s | %8d | %18d |",
-                index, car.getModel(), car.getPower(), car.getProductionYear());
+        System.out.printf("Showing: %d of %d cars (positions %d-%d)%n%n",
+                end - start, cars.size(), start + 1, end);
     }
 }
