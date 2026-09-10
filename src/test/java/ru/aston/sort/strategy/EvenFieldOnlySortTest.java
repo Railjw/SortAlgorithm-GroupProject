@@ -16,9 +16,9 @@ class EvenFieldOnlySortTest {
     void shouldSortOnlyCarsWithEvenPower() {
         List<Car> cars = TestCarsFactory.createCarsWithOddFields();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
-        EvenFieldOnlySort evenFieldOnlySort = new EvenFieldOnlySort(strategy, Car::getPower);
+        EvenFieldOnlySort<Car> evenFieldOnlySort = new EvenFieldOnlySort<>(strategy, Car::getPower);
 
         evenFieldOnlySort.sort(
                 cars,
@@ -40,9 +40,9 @@ class EvenFieldOnlySortTest {
     void shouldSortOnlyCarsWithEvenProductionYearByPower() {
         List<Car> cars = TestCarsFactory.createCarsWithOddFields();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
-        EvenFieldOnlySort evenFieldOnlySort = new EvenFieldOnlySort(strategy, Car::getProductionYear);
+        EvenFieldOnlySort<Car> evenFieldOnlySort = new EvenFieldOnlySort<>(strategy, Car::getProductionYear);
 
         evenFieldOnlySort.sort(
                 cars,
@@ -64,9 +64,9 @@ class EvenFieldOnlySortTest {
     void shouldSortOnlyCarsWithEvenProductionYearByModel() {
         List<Car> cars = TestCarsFactory.createCarsWithOddFields();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
-        EvenFieldOnlySort evenFieldOnlySort = new EvenFieldOnlySort(strategy, Car::getProductionYear);
+        EvenFieldOnlySort<Car> evenFieldOnlySort = new EvenFieldOnlySort<>(strategy, Car::getProductionYear);
 
         evenFieldOnlySort.sort(
                 cars,

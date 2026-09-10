@@ -27,7 +27,7 @@ public class ManualTest {
         sortList.add(Car.builder().model("B").power(200).productionYear(2020).build());
         sortList.add(Car.builder().model("A").power(100).productionYear(2010).build());
         
-        new BubbleSort().sort(sortList, java.util.Comparator.comparing(Car::getModel));
+        new BubbleSort<Car>().sort(sortList, java.util.Comparator.comparing(Car::getModel));
         
         if (sortList.get(0).getModel().equals("A")) {
             System.out.println("[OK] Тест базовой сортировки (Пузырек) по модели");

@@ -125,7 +125,7 @@ public class MainApp {
                     int algoChoice = scanner.nextInt();
 
                     SortAlgorithm algorithm = (algoChoice == 2) ? SortAlgorithm.QUICK : SortAlgorithm.BUBBLE;
-                    SortStrategy strategy = SortStrategyFactory.create(algorithm);
+                    SortStrategy<Car> strategy = SortStrategyFactory.create(algorithm);
 
                     strategy.sort(currentList, comp);
 
