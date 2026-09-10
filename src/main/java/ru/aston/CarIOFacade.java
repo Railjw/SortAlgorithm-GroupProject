@@ -27,10 +27,6 @@ public class CarIOFacade {
         return CarFileReader.read(fileName);
     }
 
-    public static CustomList<Car> readFromFileStream(String fileName) throws IOException {
-        return CarFileReader.readWithStream(fileName);
-    }
-
     public static CustomList<Car> generateRandom(int count) {
         return CarGenerator.generate(count);
     }

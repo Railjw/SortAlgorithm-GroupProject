@@ -14,7 +14,6 @@ public class CarParser {
 
         String[] parts = line.split(",");
         if (parts.length != EXPECTED_PARTS) {
-            System.err.println("Invalid format: " + line + " (expected " + EXPECTED_PARTS + " parts, got " + parts.length + ")");
             return Optional.empty();
         }
 
@@ -23,18 +22,12 @@ public class CarParser {
             int power = Integer.parseInt(parts[1].trim());
             int year = Integer.parseInt(parts[2].trim());
 
-            Car car = Car.builder()
+            return Optional.of(Car.builder()
                     .model(model)
                     .power(power)
                     .productionYear(year)
-                    .build();
-
-            return Optional.of(car);
-        } catch (NumberFormatException e) {
-            System.err.println("Number format error in: " + line);
-            return Optional.empty();
-        } catch (IllegalArgumentException e) {
-            System.err.println("Validation error in: " + line + " - " + e.getMessage());
+                    .build());
+        } catch (NumberFormatException | IllegalArgumentException e) {
             return Optional.empty();
         }
     }
