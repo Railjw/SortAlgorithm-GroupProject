@@ -16,7 +16,7 @@ class BubbleSortTest {
     void shouldSortCarsByPower() {
         List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,
@@ -34,7 +34,7 @@ class BubbleSortTest {
     void shouldSortCarsByModel() {
         List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,
@@ -52,7 +52,7 @@ class BubbleSortTest {
     void shouldSortCarsByProductionYear() {
         List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,

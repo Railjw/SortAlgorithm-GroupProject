@@ -35,7 +35,7 @@ public class QuickSortTest {
     @Test
     void testSortCarsByPower() {
         List<Car> cars = createCars();
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
         strategy.sort(cars, ComparatorFactory.create(SortField.POWER));
 
         assertEquals(90, cars.get(0).getPower());
@@ -50,7 +50,7 @@ public class QuickSortTest {
     @Test
     void testSortCarsByModel() {
         List<Car> cars = createCars();
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
         strategy.sort(cars, ComparatorFactory.create(SortField.MODEL));
 
         assertEquals("Audi", cars.get(0).getModel());
@@ -65,7 +65,7 @@ public class QuickSortTest {
     @Test
     void testSortCarsByProductionYear() {
         List<Car> cars = createCars();
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
         strategy.sort(cars, ComparatorFactory.create(SortField.PRODUCTION_YEAR));
 
         assertEquals(1992, cars.get(0).getProductionYear());
@@ -79,9 +79,9 @@ public class QuickSortTest {
     
     @Test
     void testBeingCrashless() {
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);        
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.QUICK);
         assertDoesNotThrow(() -> strategy.sort(null, ComparatorFactory.create(SortField.PRODUCTION_YEAR)));
-        assertDoesNotThrow(() -> strategy.sort(new LinkedList<Car>(), null));
+        assertDoesNotThrow(() -> strategy.sort(new LinkedList<>(), null));
         assertDoesNotThrow(() -> strategy.sort(null, null));
     }
 }

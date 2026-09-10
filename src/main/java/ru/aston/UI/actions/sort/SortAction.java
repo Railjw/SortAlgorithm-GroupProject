@@ -45,7 +45,7 @@ public class SortAction extends CollectionModifyingAction {
         System.out.println("Sorting " + cars.size() + " cars by " + fieldName + modeInfo + "...");
 
         try {
-            SortStrategy baseStrategy = context.getCurrentSortStrategy();
+            SortStrategy<Car> baseStrategy = context.getCurrentSortStrategy();
             Comparator<Car> comparator = ComparatorFactory.create(
                     SortField.valueOf(field.name())
             );
@@ -57,7 +57,7 @@ public class SortAction extends CollectionModifyingAction {
             if (specialMode) {
                 System.out.println("Special mode: sorting only even values");
 
-                SortStrategy strategy = new EvenFieldOnlySort(
+                SortStrategy<Car> strategy = new EvenFieldOnlySort<>(
                         baseStrategy,
                         getIntFieldExtractor()
                 );

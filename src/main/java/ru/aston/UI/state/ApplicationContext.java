@@ -81,7 +81,7 @@ public class ApplicationContext {
         return undoManager;
     }
 
-    public SortStrategy getCurrentSortStrategy() {
+    public SortStrategy<Car> getCurrentSortStrategy() {
         return SortStrategyFactory.create(currentSortAlgorithm);
     }
 
