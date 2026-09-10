@@ -55,15 +55,15 @@ public class CarInputOutput {
         CarFileWriter.write(fileName, cars, startIndex, endIndex);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment) throws IOException {
-        CarFileWriter.append(fileName, cars, comment);
+    public static void append(String fileName, CustomList<Car> cars) throws IOException {
+        CarFileWriter.append(fileName, cars);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int limit) throws IOException {
-        CarFileWriter.append(fileName, cars, comment, limit);
+    public static void append(String fileName, CustomList<Car> cars, int limit) throws IOException {
+        CarFileWriter.append(fileName, cars, limit);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int startIndex, int endIndex) throws IOException {
-        CarFileWriter.append(fileName, cars, comment, startIndex, endIndex);
+    public static void append(String fileName, CustomList<Car> cars, int startIndex, int endIndex) throws IOException {
+        CarFileWriter.append(fileName, cars, startIndex, endIndex);
     }
 }

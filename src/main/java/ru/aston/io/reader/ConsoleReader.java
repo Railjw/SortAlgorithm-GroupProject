@@ -43,8 +43,8 @@ public class ConsoleReader {
     }
 
     public static CustomList<Car> readMultiple(int count) {
-        System.out.println("Enter " + count + " cars in format: Model, Power, Year");
-        System.out.println("Example: BMW X5, 340, 2023");
+        System.out.println("Enter " + count + " cars in format: Power, Model, Year");
+        System.out.println("Example: 340, BMW X5, 2023");
 
         CustomList<Car> cars = new CustomList<>();
         Stream.generate(() -> {

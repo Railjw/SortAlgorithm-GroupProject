@@ -55,15 +55,15 @@ public class CarIOFacade {
         CarFileWriter.write(fileName, cars, start, end);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment) throws IOException {
-        CarFileWriter.append(fileName, cars, comment);
+    public static void append(String fileName, CustomList<Car> cars) throws IOException {
+        CarFileWriter.append(fileName, cars);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int limit) throws IOException {
-        CarFileWriter.append(fileName, cars, comment, limit);
+    public static void append(String fileName, CustomList<Car> cars, int limit) throws IOException {
+        CarFileWriter.append(fileName, cars, limit);
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int start, int end) throws IOException {
-        CarFileWriter.append(fileName, cars, comment, start, end);
+    public static void append(String fileName, CustomList<Car> cars, int start, int end) throws IOException {
+        CarFileWriter.append(fileName, cars, start, end);
     }
 }

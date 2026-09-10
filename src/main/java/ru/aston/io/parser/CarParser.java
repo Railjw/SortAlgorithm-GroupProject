@@ -18,16 +18,16 @@ public class CarParser {
         }
 
         try {
-            String model = parts[0].trim();
-            int power = Integer.parseInt(parts[1].trim());
+            int power = Integer.parseInt(parts[0].trim());
+            String model = parts[1].trim();
             int year = Integer.parseInt(parts[2].trim());
 
             return Optional.of(Car.builder()
-                    .model(model)
                     .power(power)
+                    .model(model)
                     .productionYear(year)
                     .build());
-        } catch (NumberFormatException | IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return Optional.empty();
         }
     }
