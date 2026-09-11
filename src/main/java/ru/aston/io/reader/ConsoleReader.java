@@ -5,15 +5,11 @@ import ru.aston.CustomList;
 import ru.aston.io.parser.CarParser;
 
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class ConsoleReader {
 
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static Car readOne() {
+    public static Car readOne(Scanner scanner) {
         while (true) {
             try {
                 System.out.print("Enter power (hp): ");
@@ -42,35 +38,26 @@ public class ConsoleReader {
         }
     }
 
-    public static CustomList<Car> readMultiple(int count) {
+    public static CustomList<Car> readMultiple(Scanner scanner, int count) {
         System.out.println("Enter " + count + " cars in format: Model, Power, Year");
         System.out.println("Example: BMW X5, 340, 2023");
 
         CustomList<Car> cars = new CustomList<>();
-        Stream.generate(() -> {
-                    System.out.print("Car #: ");
-                    String line = scanner.nextLine();
-                    return CarParser.parseLine(line).orElse(null);
-                })
-                .limit(count)
-                .filter(Objects::nonNull)
-                .forEach(cars::add);
-
+        for (int i = 0; i < count; i++) {
+            System.out.print("Car #" + (i + 1) + ": ");
+            CarParser.parseLine(scanner.nextLine()).ifPresent(cars::add);
+        }
         return cars;
     }
 
-    public static CustomList<Car> readOneByOne(int count) {
+    public static CustomList<Car> readOneByOne(Scanner scanner, int count) {
         System.out.println("Enter data for " + count + " cars:");
 
         CustomList<Car> cars = new CustomList<>();
-        Stream.generate(() -> {
-                    System.out.println("\n-- Car #" + (cars.size() + 1) + " --");
-                    return readOne();
-                })
-                .limit(count)
-                .filter(Objects::nonNull)
-                .forEach(cars::add);
-
+        for (int i = 0; i < count; i++) {
+            System.out.println("\n-- Car #" + (i + 1) + " --");
+            cars.add(readOne(scanner));
+        }
         return cars;
     }
 }

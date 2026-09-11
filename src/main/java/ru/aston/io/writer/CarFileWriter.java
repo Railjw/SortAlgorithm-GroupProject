@@ -3,7 +3,12 @@ package ru.aston.io.writer;
 import ru.aston.Car;
 import ru.aston.CustomList;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Date;
 
 public class CarFileWriter {
@@ -24,7 +29,12 @@ public class CarFileWriter {
             throw new IllegalArgumentException("Invalid range. Available: " + cars.size());
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new java.io.FileWriter(fileName))) {
+        try (BufferedWriter bw = Files.newBufferedWriter(
+                Paths.get(fileName),
+                StandardCharsets.UTF_8,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.TRUNCATE_EXISTING)) {
+
             bw.write("=== Cars (positions " + (start + 1) + "-" + end + ") ===\n");
             bw.write("Date: " + new Date() + "\n");
             bw.write("Total: " + cars.size() + " | Written: " + (end - start) + "\n\n");
@@ -54,10 +64,15 @@ public class CarFileWriter {
             throw new IllegalArgumentException("Invalid range. Available: " + cars.size());
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new java.io.FileWriter(fileName, true))) {
+        try (BufferedWriter bw = Files.newBufferedWriter(
+                Paths.get(fileName),
+                StandardCharsets.UTF_8,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND)) {
+
             bw.write("\n=== " + comment + " ===\n");
             bw.write("Date: " + new Date() + "\n");
-            bw.write("Total: " + cars.size() + " | Written: " + (end - start) + "\n");
+            bw.write("Appended: " + (end - start) + " cars (from collection of " + cars.size() + ")\n");
             bw.write("Positions: " + (start + 1) + "-" + end + "\n\n");
 
             for (int i = start; i < end; i++) {

@@ -12,23 +12,19 @@ import java.util.Scanner;
 public class CarInputOutput {
 
     public static Car inputFromConsole(Scanner scanner) {
-        return ConsoleReader.readOne();
+        return ConsoleReader.readOne(scanner);
     }
 
     public static CustomList<Car> inputMultipleFromConsole(Scanner scanner, int count) {
-        return ConsoleReader.readMultiple(count);
+        return ConsoleReader.readMultiple(scanner, count);
     }
 
-    public static CustomList<Car> inputSingleFromConsole(Scanner scanner, int count) {
-        return ConsoleReader.readOneByOne(count);
+    public static CustomList<Car> inputOneByOneFromConsole(Scanner scanner, int count) {
+        return ConsoleReader.readOneByOne(scanner, count);
     }
 
     public static CustomList<Car> readFromFile(String fileName) throws IOException {
         return CarFileReader.read(fileName);
-    }
-
-    public static CustomList<Car> readFromFileStream(String fileName) throws IOException {
-        return CarFileReader.readWithStream(fileName);
     }
 
     public static CustomList<Car> generateRandom(int count) {

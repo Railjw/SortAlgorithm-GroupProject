@@ -4,7 +4,6 @@ import ru.aston.Car;
 import ru.aston.CustomList;
 
 import java.util.Random;
-import java.util.stream.Stream;
 
 public class CarGenerator {
 
@@ -22,24 +21,16 @@ public class CarGenerator {
     private static final int MAX_YEAR = 2026;
 
     public static CustomList<Car> generate(int count) {
+        if (count <= 0) {
+            return new CustomList<>();
+        }
+
         Random rand = new Random();
-        CustomList<Car> cars = new CustomList<>();
 
-        Stream.generate(() -> {
-                    try {
-                        return Car.builder()
-                                .power(rand.nextInt(MAX_POWER - MIN_POWER + 1) + MIN_POWER)
-                                .model(MODELS[rand.nextInt(MODELS.length)])
-                                .productionYear(rand.nextInt(MAX_YEAR - MIN_YEAR + 1) + MIN_YEAR)
-                                .build();
-                    } catch (IllegalArgumentException e) {
-                        return null;
-                    }
-                })
-                .limit(count)
-                .filter(car -> car != null)
-                .forEach(cars::add);
-
-        return cars;
+        return CustomList.generate(() -> Car.builder()
+                .power(rand.nextInt(MAX_POWER - MIN_POWER + 1) + MIN_POWER)
+                .model(MODELS[rand.nextInt(MODELS.length)])
+                .productionYear(rand.nextInt(MAX_YEAR - MIN_YEAR + 1) + MIN_YEAR)
+                .build(), count);
     }
 }
