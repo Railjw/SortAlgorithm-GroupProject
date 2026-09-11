@@ -17,7 +17,7 @@ public class ConsoleWriter {
     }
 
     public static void print(CustomList<Car> cars, int startIndex, int endIndex) {
-        if (cars.size() == 0) {
+        if (cars.isEmpty()) {
             System.out.println("Collection is empty.");
             return;
         }
