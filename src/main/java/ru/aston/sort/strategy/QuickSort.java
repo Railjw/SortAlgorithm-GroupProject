@@ -3,9 +3,9 @@ package ru.aston.sort.strategy;
 import java.util.Comparator;
 import java.util.List;
 
-public class QuickSort implements SortStrategy {
-    private int getPivotAndReorganize(List arr, int low, int high, Comparator comparator) {
-        Object pivot = arr.get(high);       
+public class QuickSort<T> implements SortStrategy<T> {
+    private int getPivotAndReorganize(List<T> arr, int low, int high, Comparator<T> comparator) {
+        T pivot = arr.get(high);
         int i = low - 1;
 
         for (int j = low; j <= high - 1; j++) {
@@ -19,13 +19,13 @@ public class QuickSort implements SortStrategy {
         return i + 1;
     }
 
-    private void swap(List arr, int i, int j) {
-        Object temp = arr.get(i);
+    private void swap(List<T> arr, int i, int j) {
+        T temp = arr.get(i);
         arr.set(i, arr.get(j));
         arr.set(j, temp);
     }
     
-    private void quickSort(List arr, int low, int high, Comparator comparator) {
+    private void quickSort(List<T> arr, int low, int high, Comparator<T> comparator) {
         if (low < high) {            
             int pi = getPivotAndReorganize(arr, low, high, comparator);
             
@@ -35,7 +35,7 @@ public class QuickSort implements SortStrategy {
     }
     
     @Override
-    public void sort(List arr, Comparator comparator) {
+    public void sort(List<T> arr, Comparator<T> comparator) {
         if (arr == null || arr.size() < 2 || comparator == null) {
             return;
         }

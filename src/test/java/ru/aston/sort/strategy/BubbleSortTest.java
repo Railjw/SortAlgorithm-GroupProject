@@ -7,33 +7,16 @@ import ru.aston.sort.SortAlgorithm;
 import ru.aston.sort.SortField;
 import ru.aston.sort.SortStrategyFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BubbleSortTest {
-    private static List<Car> createCars() {
-        List<Car> cars = new ArrayList<>();
-
-        cars.add(createCar(200, "BMW", 1992));
-        cars.add(createCar(100, "Mercedes", 2003));
-        cars.add(createCar(150, "Audi", 2015));
-        cars.add(createCar(300, "Volkswagen", 1992));
-        cars.add(createCar(90, "Toyota", 2008));
-
-        return cars;
-    }
-
-    private static Car createCar(int power, String model, int productionYear) {
-        return Car.builder().power(power).model(model).productionYear(productionYear).build();
-    }
-
     @Test
-    void testSortCarsByPower() {
-        List<Car> cars = createCars();
+    void shouldSortCarsByPower() {
+        List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,
@@ -48,10 +31,10 @@ class BubbleSortTest {
     }
 
     @Test
-    void testSortCarsByModel() {
-        List<Car> cars = createCars();
+    void shouldSortCarsByModel() {
+        List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,
@@ -66,17 +49,19 @@ class BubbleSortTest {
     }
 
     @Test
-    void testSortCarsByProductionYear() {
-        List<Car> cars = createCars();
+    void shouldSortCarsByProductionYear() {
+        List<Car> cars = TestCarsFactory.createCars();
 
-        SortStrategy strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
+        SortStrategy<Car> strategy = SortStrategyFactory.create(SortAlgorithm.BUBBLE);
 
         strategy.sort(
                 cars,
                 ComparatorFactory.create(SortField.PRODUCTION_YEAR)
         );
 
+        assertEquals(1992, cars.get(0).getProductionYear());
         assertEquals("BMW", cars.get(0).getModel());
+        assertEquals(1992, cars.get(1).getProductionYear());
         assertEquals("Volkswagen", cars.get(1).getModel());
         assertEquals(2003, cars.get(2).getProductionYear());
         assertEquals(2008, cars.get(3).getProductionYear());
