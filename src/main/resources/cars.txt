@@ -1,10 +1,13 @@
-150,Lada Granta,2020
-200,BMW X5,2022
-95,Lada Vesta,2021
-180,Toyota Camry,2019
-450,Audi R8,2023
-320,BMW M5,2022
-150,Honda Civic,2021
-190,Toyota RAV4,2020
-250,Audi TT,2023
-120,Lada Iskra,2022
+Lada Granta, 100, 2018
+Lada Vesta, 110, 2020
+Lada Iskra, 95, 2024
+BMW X5, 300, 2023
+BMW M5, 600, 2022
+BMW X3, 250, 2021
+Audi TT, 220, 2019
+Audi A4, 250, 2020
+Audi R8, 550, 2021
+Toyota RAV4, 170, 2022
+Toyota Camry, 170, 2020
+Honda CR-V, 150, 2021
+Honda Civic, 140, 2019
