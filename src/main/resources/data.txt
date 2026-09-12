@@ -1,0 +1,15 @@
+=== Cars (positions 1-9) ===
+Date: Sat Sep 12 17:13:22 MSK 2026
+Total: 13 | Written: 9
+
+1. Lada Granta, 100, 2018
+2. Lada Vesta, 110, 2020
+3. Lada Iskra, 95, 2024
+4. BMW X5, 300, 2023
+5. BMW M5, 600, 2022
+6. BMW X3, 250, 2021
+7. Audi TT, 220, 2019
+8. Audi A4, 250, 2020
+9. Audi R8, 550, 2021
+
+--- End of record ---

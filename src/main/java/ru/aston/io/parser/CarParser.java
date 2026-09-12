@@ -1,6 +1,6 @@
 package ru.aston.io.parser;
 
-import ru.aston.Car;
+import ru.aston.model.Car;
 
 import java.util.Optional;
 

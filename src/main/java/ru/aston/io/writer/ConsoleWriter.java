@@ -1,22 +1,23 @@
 package ru.aston.io.writer;
 
-import ru.aston.Car;
-import ru.aston.CustomList;
+import ru.aston.model.Car;
+
+import java.util.List;
 
 public class ConsoleWriter {
 
     private static final String BORDER = "----------------------------------------------------------";
     private static final String HEADER = "|  №  | Model                | Power    | Production Year|";
 
-    public static void print(CustomList<Car> cars) {
+    public static void print(List<Car> cars) {
         print(cars, 0, cars.size());
     }
 
-    public static void print(CustomList<Car> cars, int limit) {
+    public static void print(List<Car> cars, int limit) {
         print(cars, 0, Math.min(limit, cars.size()));
     }
 
-    public static void print(CustomList<Car> cars, int startIndex, int endIndex) {
+    public static void print(List<Car> cars, int startIndex, int endIndex) {
         if (cars.isEmpty()) {
             System.out.println("Collection is empty.");
             return;
