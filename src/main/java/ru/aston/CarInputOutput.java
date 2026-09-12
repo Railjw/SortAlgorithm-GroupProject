@@ -15,14 +15,6 @@ public class CarInputOutput {
         return ConsoleReader.readOne(scanner);
     }
 
-    public static CustomList<Car> inputMultipleFromConsole(Scanner scanner, int count) {
-        return ConsoleReader.readMultiple(scanner, count);
-    }
-
-    public static CustomList<Car> inputOneByOneFromConsole(Scanner scanner, int count) {
-        return ConsoleReader.readOneByOne(scanner, count);
-    }
-
     public static CustomList<Car> readFromFile(String fileName) throws IOException {
         return CarFileReader.read(fileName);
     }

@@ -24,7 +24,7 @@ public class CarParser {
                     .power(Integer.parseInt(parts[1].trim()))
                     .productionYear(Integer.parseInt(parts[2].trim()))
                     .build());
-        } catch (NumberFormatException | IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             return Optional.empty();
         }
     }
