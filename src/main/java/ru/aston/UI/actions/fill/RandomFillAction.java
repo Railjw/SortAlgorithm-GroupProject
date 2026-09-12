@@ -1,7 +1,7 @@
 package ru.aston.UI.actions.fill;
 
-import ru.aston.Car;
-import ru.aston.CarInputOutput;
+import ru.aston.model.Car;
+import ru.aston.io.CarInputOutput;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.CollectionModifyingAction;
 
@@ -33,6 +33,7 @@ public class RandomFillAction extends CollectionModifyingAction {
     @Override
     protected List<Car> modify(ApplicationContext context, List<Car> cars) {
         System.out.println("Generating " + count + " random cars...");
+
         List<Car> generatedCars = CarInputOutput.generateRandom(count);
 
         if (generatedCars.isEmpty()) {
@@ -54,11 +55,8 @@ public class RandomFillAction extends CollectionModifyingAction {
         if (!cars.isEmpty()) {
             System.out.println("Total cars: " + cars.size());
             System.out.println("\nFirst 5 generated cars:");
-            for (int i = 0; i < Math.min(5, cars.size()); i++) {
-                Car car = cars.get(i);
-                System.out.println("  " + (i + 1) + ". " + car.getPower() + " HP, " +
-                        car.getModel() + ", " + car.getProductionYear());
-            }
+
+            CarInputOutput.print(cars, 5);
         }
         System.out.println("\nUse 'Undo' to revert to previous state");
     }

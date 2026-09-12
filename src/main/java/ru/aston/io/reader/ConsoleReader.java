@@ -1,8 +1,6 @@
 package ru.aston.io.reader;
 
-import ru.aston.Car;
-import ru.aston.CustomList;
-import ru.aston.io.parser.CarParser;
+import ru.aston.model.Car;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

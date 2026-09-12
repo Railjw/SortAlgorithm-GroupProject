@@ -1,10 +1,10 @@
 package ru.aston.UI.actions.search;
 
-import ru.aston.CarInputOutput;
+import ru.aston.io.CarInputOutput;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.MenuAction;
 import ru.aston.extra.Task4;
-import ru.aston.Car;
+import ru.aston.model.Car;
 
 import java.util.List;
 import java.util.Scanner;

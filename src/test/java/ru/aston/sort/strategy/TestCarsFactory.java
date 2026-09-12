@@ -1,6 +1,6 @@
 package ru.aston.sort.strategy;
 
-import ru.aston.Car;
+import ru.aston.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;

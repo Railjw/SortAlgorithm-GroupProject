@@ -1,6 +1,7 @@
 package ru.aston.UI.actions.sort;
 
-import ru.aston.Car;
+import ru.aston.CustomCollection.ListFactory;
+import ru.aston.model.Car;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.CollectionModifyingAction;
 import ru.aston.sort.ComparatorFactory;
@@ -34,6 +35,7 @@ public class SortAction extends CollectionModifyingAction {
             System.out.println("Collection is empty! Please fill it first.");
             return false;
         }
+        context.setCars(ListFactory.create(ListFactory.ListType.ARRAY, context.getCars()));
         return true;
     }
 

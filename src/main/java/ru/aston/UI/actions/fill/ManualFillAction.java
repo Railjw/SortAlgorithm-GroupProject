@@ -1,7 +1,7 @@
 package ru.aston.UI.actions.fill;
 
-import ru.aston.Car;
-import ru.aston.CarInputOutput;
+import ru.aston.model.Car;
+import ru.aston.io.CarInputOutput;
 import ru.aston.CustomCollection.ListFactory;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.CollectionModifyingAction;
@@ -17,7 +17,7 @@ public class ManualFillAction extends CollectionModifyingAction {
         System.out.println("=== MANUAL CAR INPUT ===");
         System.out.println("Enter car details. Enter 0 for power to finish.\n");
 
-        List<Car> newCars = ListFactory.create();
+        List<Car> newCars = ListFactory.create(ListFactory.ListType.LINKED);
 
         while (true) {
             System.out.println("\n--- Car #" + (newCars.size() + 1) + " ---");

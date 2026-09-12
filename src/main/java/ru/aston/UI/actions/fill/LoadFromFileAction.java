@@ -1,7 +1,7 @@
 package ru.aston.UI.actions.fill;
 
-import ru.aston.Car;
-import ru.aston.CarInputOutput;
+import ru.aston.model.Car;
+import ru.aston.io.CarInputOutput;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.CollectionModifyingAction;
 
@@ -10,18 +10,27 @@ import java.util.List;
 
 public class LoadFromFileAction extends CollectionModifyingAction {
 
+    private static final String DEFAULT_FILE_PATH =
+            "src/main/resources/data.txt";
+
     private String filePath;
     private int loadedCount = 0;
 
     @Override
     protected boolean validatePreconditions(ApplicationContext context) {
-        System.out.print("Enter file path (e.g., cars.txt): ");
-        filePath = context.getScanner().nextLine().trim();
+        System.out.print("Enter file path (press Enter for default): ");
+        System.out.println("  Default: " + DEFAULT_FILE_PATH);
+        System.out.print("Your choice: ");
 
-        if (filePath.isEmpty()) {
-            System.out.println("File path cannot be empty.");
-            return false;
+        String input = context.getScanner().nextLine().trim();
+
+        if (input.isEmpty()) {
+            filePath = DEFAULT_FILE_PATH;
+            System.out.println("Using default path: " + DEFAULT_FILE_PATH);
+        } else {
+            filePath = input;
         }
+
         return true;
     }
 
@@ -36,7 +45,8 @@ public class LoadFromFileAction extends CollectionModifyingAction {
                 return cars;
             }
 
-            System.out.println("Successfully loaded " + loadedCars.size() + " cars from file: " + filePath);
+            System.out.println("Successfully loaded " + loadedCars.size() +
+                    " cars from file: " + filePath);
             return loadedCars;
 
         } catch (IOException e) {
@@ -53,7 +63,9 @@ public class LoadFromFileAction extends CollectionModifyingAction {
 
     @Override
     protected void displayResult(ApplicationContext context, List<Car> cars) {
-        System.out.println("Total cars in collection: " + cars.size());
-        System.out.println("Use 'Undo' to revert to previous state");
+        if (loadedCount > 0) {
+            System.out.println("Total cars in collection: " + cars.size());
+            System.out.println("Use 'Undo' to revert to previous state");
+        }
     }
 }

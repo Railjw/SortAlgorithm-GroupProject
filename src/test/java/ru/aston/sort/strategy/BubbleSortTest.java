@@ -1,7 +1,7 @@
 package ru.aston.sort.strategy;
 
 import org.junit.jupiter.api.Test;
-import ru.aston.Car;
+import ru.aston.model.Car;
 import ru.aston.sort.ComparatorFactory;
 import ru.aston.sort.SortAlgorithm;
 import ru.aston.sort.SortField;
