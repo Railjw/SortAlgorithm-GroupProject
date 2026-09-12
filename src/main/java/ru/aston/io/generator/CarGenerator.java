@@ -1,9 +1,13 @@
 package ru.aston.io.generator;
 
-import ru.aston.Car;
-import ru.aston.CustomList;
+import ru.aston.model.Car;
+import ru.aston.CustomCollection.ListFactory;
 
+import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CarGenerator {
 
@@ -20,17 +24,25 @@ public class CarGenerator {
     private static final int MIN_YEAR = 1886;
     private static final int MAX_YEAR = 2026;
 
-    public static CustomList<Car> generate(int count) {
+    public static List<Car> generate(int count) {
+
+        List<Car> result = ListFactory.create(ListFactory.ListType.LINKED);
+
         if (count <= 0) {
-            return new CustomList<>();
+            return result;
         }
 
         Random rand = new Random();
 
-        return CustomList.generate(() -> Car.builder()
+        Supplier<Car> supplier = () -> Car.builder()
                 .power(rand.nextInt(MAX_POWER - MIN_POWER + 1) + MIN_POWER)
                 .model(MODELS[rand.nextInt(MODELS.length)])
                 .productionYear(rand.nextInt(MAX_YEAR - MIN_YEAR + 1) + MIN_YEAR)
-                .build(), count);
+                .build();
+
+
+        return Stream.generate(supplier)
+                .limit(count)
+                .collect(Collectors.toCollection(ListFactory::create));
     }
 }

@@ -1,7 +1,6 @@
 package ru.aston.io.writer;
 
-import ru.aston.Car;
-import ru.aston.CustomList;
+import ru.aston.model.Car;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,18 +9,19 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Date;
+import java.util.List;
 
 public class CarFileWriter {
 
-    public static void write(String fileName, CustomList<Car> cars) throws IOException {
+    public static void write(String fileName, List<Car> cars) throws IOException {
         write(fileName, cars, 0, cars.size());
     }
 
-    public static void write(String fileName, CustomList<Car> cars, int limit) throws IOException {
+    public static void write(String fileName, List<Car> cars, int limit) throws IOException {
         write(fileName, cars, 0, Math.min(limit, cars.size()));
     }
 
-    public static void write(String fileName, CustomList<Car> cars, int startIndex, int endIndex) throws IOException {
+    public static void write(String fileName, List<Car> cars, int startIndex, int endIndex) throws IOException {
         int start = Math.max(0, startIndex);
         int end = Math.min(cars.size(), endIndex);
 
@@ -48,15 +48,15 @@ public class CarFileWriter {
         }
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment) throws IOException {
+    public static void append(String fileName, List<Car> cars, String comment) throws IOException {
         append(fileName, cars, comment, 0, cars.size());
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int limit) throws IOException {
+    public static void append(String fileName, List<Car> cars, String comment, int limit) throws IOException {
         append(fileName, cars, comment, 0, Math.min(limit, cars.size()));
     }
 
-    public static void append(String fileName, CustomList<Car> cars, String comment, int startIndex, int endIndex) throws IOException {
+    public static void append(String fileName, List<Car> cars, String comment, int startIndex, int endIndex) throws IOException {
         int start = Math.max(0, startIndex);
         int end = Math.min(cars.size(), endIndex);
 

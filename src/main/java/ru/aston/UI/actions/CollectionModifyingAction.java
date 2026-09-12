@@ -1,6 +1,6 @@
 package ru.aston.UI.actions;
 
-import ru.aston.Car;
+import ru.aston.model.Car;
 import ru.aston.CustomCollection.ListFactory;
 import ru.aston.UI.state.ApplicationContext;
 

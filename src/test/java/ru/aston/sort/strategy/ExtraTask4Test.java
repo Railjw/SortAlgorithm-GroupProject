@@ -3,7 +3,7 @@ package ru.aston.sort.strategy;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
-import ru.aston.Car;
+import ru.aston.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;

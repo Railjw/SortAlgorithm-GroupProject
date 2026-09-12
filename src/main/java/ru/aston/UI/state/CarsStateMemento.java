@@ -1,6 +1,6 @@
 package ru.aston.UI.state;
 
-import ru.aston.Car;
+import ru.aston.model.Car;
 import ru.aston.CustomCollection.ListFactory;
 
 import java.util.List;
