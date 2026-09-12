@@ -24,6 +24,7 @@ public class ExtraTask4Test {
         cars.add(createCar(100, "Mercedes", 2003));
         cars.add(createCar(150, "Audi", 2015));
         cars.add(createCar(150, "Audi", 2015));
+        cars.add(null);
         cars.add(createCar(300, "Volkswagen", 1992));
         cars.add(createCar(300, "Opel", 1992));
         cars.add(createCar(90, "Toyota", 2008));
