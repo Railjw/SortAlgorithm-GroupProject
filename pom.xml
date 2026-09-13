@@ -18,7 +18,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.aston.UI.CarApp</mainClass>
+                            <mainClass>ru.aston.CarApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

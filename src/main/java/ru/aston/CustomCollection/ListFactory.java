@@ -7,14 +7,15 @@ public class ListFactory {
 
     public enum ListType {
         ARRAY,
-        LINKED
-
+        LINKED,
+        ADAPTED_ITERABLE
     }
 
     public static <T> List<T> create(ListType type) {
         return switch (type) {
             case ARRAY -> new CustomArrayList<>();
             case LINKED -> new CustomLinkedList<>();
+            case ADAPTED_ITERABLE -> new CustomListAdapter<>();
         };
     }
 
@@ -26,6 +27,7 @@ public class ListFactory {
         return switch (type) {
             case ARRAY -> new CustomArrayList<>(collection);
             case LINKED -> new CustomLinkedList<>(collection);
+            case ADAPTED_ITERABLE -> new CustomListAdapter<>(collection);
         };
     }
 
