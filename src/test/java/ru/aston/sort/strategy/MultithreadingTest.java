@@ -11,9 +11,9 @@ import org.junit.jupiter.api.AfterEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
-import ru.aston.extra.Task4;
+import ru.aston.extra.MultithreadedCounter;
 
-public class ExtraTask4Test {
+public class MultithreadingTest {
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     
@@ -47,12 +47,12 @@ public class ExtraTask4Test {
         Car zeroCar = createCar(123, "Opel", 1986);
         Car twoCars = createCar(150, "Audi", 2015);
         
-        Task4.calcSameObjectsCountAndPrint(zeroCar, cars);
+        MultithreadedCounter.calcSameObjectsCountAndPrint(zeroCar, cars);
         assertEquals("0" + System.lineSeparator(), outputStreamCaptor.toString());
         
         outputStreamCaptor.reset();
         
-        Task4.calcSameObjectsCountAndPrint(twoCars, cars);
+        MultithreadedCounter.calcSameObjectsCountAndPrint(twoCars, cars);
         assertEquals("2" + System.lineSeparator(), outputStreamCaptor.toString());       
     }
     
@@ -66,8 +66,8 @@ public class ExtraTask4Test {
         List<Car> cars = createCars();
         Car testCar = createCar(123, "Opel", 1986);
         
-        assertDoesNotThrow(() -> Task4.calcSameObjectsCountAndPrint(null, cars));
-        assertDoesNotThrow(() -> Task4.calcSameObjectsCountAndPrint(testCar, null));
-        assertDoesNotThrow(() -> Task4.calcSameObjectsCountAndPrint(null, null));
+        assertDoesNotThrow(() -> MultithreadedCounter.calcSameObjectsCountAndPrint(null, cars));
+        assertDoesNotThrow(() -> MultithreadedCounter.calcSameObjectsCountAndPrint(testCar, null));
+        assertDoesNotThrow(() -> MultithreadedCounter.calcSameObjectsCountAndPrint(null, null));
     }
 }

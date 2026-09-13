@@ -1,4 +1,4 @@
-package ru.aston;
+package ru.aston.CustomCollection;
 
 import java.util.Iterator;
 import java.util.function.Supplier;

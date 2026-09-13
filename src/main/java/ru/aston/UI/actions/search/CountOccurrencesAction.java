@@ -3,7 +3,7 @@ package ru.aston.UI.actions.search;
 import ru.aston.io.CarInputOutput;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.MenuAction;
-import ru.aston.extra.Task4;
+import ru.aston.extra.MultithreadedCounter;
 import ru.aston.model.Car;
 
 import java.util.List;
@@ -35,6 +35,6 @@ public class CountOccurrencesAction implements MenuAction {
                 ", " + searchCar.getPower() + " hp, " +
                 searchCar.getProductionYear() + " yr.");
 
-        Task4.calcSameObjectsCountAndPrint(searchCar, carList);
+        MultithreadedCounter.calcSameObjectsCountAndPrint(searchCar, carList);
     }
 }

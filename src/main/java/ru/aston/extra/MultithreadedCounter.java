@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ExecutionException;
 
-public class Task4 {
+public class MultithreadedCounter {
     static class PartialCounter implements Callable<Integer> {
         private final Object objToSearch;
         private final List globalList;
