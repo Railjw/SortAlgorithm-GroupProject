@@ -7,6 +7,7 @@ import ru.aston.extra.MultithreadedCounter;
 import ru.aston.model.Car;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CountOccurrencesAction implements MenuAction {
@@ -20,16 +21,16 @@ public class CountOccurrencesAction implements MenuAction {
             return;
         }
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter car details to search:");
 
-        Car searchCar;
-        try {
-            searchCar = CarInputOutput.inputFromConsole(scanner);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error while reading car data: " + e.getMessage());
+        Optional<Car> maybeCar = CarInputOutput.inputFromConsole(context.getScanner());
+
+        if (maybeCar.isEmpty()) {
+            System.out.println("Search cancelled.");
             return;
         }
+
+        Car searchCar = maybeCar.get();
 
         System.out.println("\nSearching for car: " + searchCar.getModel() +
                 ", " + searchCar.getPower() + " hp, " +
