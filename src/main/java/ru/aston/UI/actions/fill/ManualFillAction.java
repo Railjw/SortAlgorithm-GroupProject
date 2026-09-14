@@ -2,11 +2,11 @@ package ru.aston.UI.actions.fill;
 
 import ru.aston.model.Car;
 import ru.aston.io.CarInputOutput;
-import ru.aston.CustomCollection.ListFactory;
 import ru.aston.UI.state.ApplicationContext;
 import ru.aston.UI.actions.CollectionModifyingAction;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ManualFillAction extends CollectionModifyingAction {
 
@@ -17,42 +17,35 @@ public class ManualFillAction extends CollectionModifyingAction {
         System.out.println("=== MANUAL CAR INPUT ===");
         System.out.println("Enter car details. Enter 0 for power to finish.\n");
 
-        List<Car> newCars = ListFactory.create(ListFactory.ListType.LINKED);
+        List<Car> newCars = CarInputOutput.createCarList();
 
         while (true) {
             System.out.println("\n--- Car #" + (newCars.size() + 1) + " ---");
 
-            try {
-                System.out.print("Enter power (or 0 to finish): ");
-                String powerCheck = context.getScanner().nextLine().trim();
+            Optional<Car> maybeCar = CarInputOutput.inputFromConsole(context.getScanner());
 
-                if (powerCheck.isEmpty() || powerCheck.equals("0")) {
-                    if (askFinish(context)) break;
+            if (maybeCar.isEmpty()) {
+                if (askFinish(context)) {
+                    break;
+                } else {
                     continue;
                 }
+            }
 
-                Car car = CarInputOutput.inputFromConsole(context.getScanner());
-                newCars.add(car);
-                System.out.println("Car added successfully!");
+            newCars.add(maybeCar.get());
+            System.out.println("Car added successfully!");
 
-                System.out.print("Add another car? (y/n): ");
-                String answer = context.getScanner().nextLine().trim().toLowerCase();
-                if (!answer.equals("y") && !answer.equals("yes")) {
-                    break;
-                }
-
-            } catch (IllegalArgumentException e) {
-                System.out.println("Validation error: " + e.getMessage());
-                System.out.println("Please try again.");
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+            System.out.print("Add another car? (y/n): ");
+            String answer = context.getScanner().nextLine().trim().toLowerCase();
+            if (!answer.equals("y") && !answer.equals("yes")) {
+                break;
             }
         }
 
         addedCount = newCars.size();
 
         if (!newCars.isEmpty()) {
-            List<Car> allCars = ListFactory.create(existingCars);
+            List<Car> allCars = CarInputOutput.copyCarList(existingCars);
             allCars.addAll(newCars);
             return allCars;
         }

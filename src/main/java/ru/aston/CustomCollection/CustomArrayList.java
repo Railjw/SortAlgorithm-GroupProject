@@ -68,7 +68,8 @@ public class CustomArrayList<T> implements List<T> {
     @Override
     public boolean add(T t) {
         if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+            int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
+            elements = Arrays.copyOf(elements, newCapacity);
         }
         elements[size++] = t;
         return true;
@@ -160,7 +161,8 @@ public class CustomArrayList<T> implements List<T> {
     public void add(int index, T element) {
         if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+            int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
+            elements = Arrays.copyOf(elements, newCapacity);
         }
         System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;

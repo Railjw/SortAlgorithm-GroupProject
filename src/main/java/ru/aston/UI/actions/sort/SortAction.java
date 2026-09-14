@@ -35,6 +35,14 @@ public class SortAction extends CollectionModifyingAction {
             System.out.println("Collection is empty! Please fill it first.");
             return false;
         }
+
+        if (specialMode && !isNumericField()) {
+            System.out.println("Special mode (even/odd) is only available for numeric fields: POWER, PRODUCTION_YEAR");
+            System.out.println("Field '" + getFieldName() + "' is not numeric. Use normal sort instead.");
+            return false;
+        }
+
+        // Optimization: replace list with ArrayList before sorting
         context.setCars(ListFactory.create(ListFactory.ListType.ARRAY, context.getCars()));
         return true;
     }
@@ -111,11 +119,17 @@ public class SortAction extends CollectionModifyingAction {
                 car.getPower(), car.getModel(), car.getProductionYear());
     }
 
+    private boolean isNumericField() {
+        return field == SortField.POWER
+                || field == SortField.PRODUCTION_YEAR;
+    }
+
     private ToIntFunction<Car> getIntFieldExtractor() {
         return switch (field) {
             case POWER -> Car::getPower;
             case PRODUCTION_YEAR -> Car::getProductionYear;
-            case MODEL -> car -> car.getModel().length();
+            case MODEL -> throw new UnsupportedOperationException(
+                    "Model field is not numeric. Special mode is not supported.");
         };
     }
 }

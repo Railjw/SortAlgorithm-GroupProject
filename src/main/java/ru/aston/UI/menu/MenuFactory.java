@@ -52,8 +52,13 @@ public class MenuFactory {
 
         menu.addChild(new ActionMenuItem("Sort by Model",
                 new SortAction(SortField.MODEL, false)));
-        menu.addChild(new ActionMenuItem("Sort by Year",
+
+        CompositeMenu yearSortMenu = new CompositeMenu("Sort by Year");
+        yearSortMenu.addChild(new ActionMenuItem("Normal sort",
                 new SortAction(SortField.PRODUCTION_YEAR, false)));
+        yearSortMenu.addChild(new ActionMenuItem("Special sort (even/odd)",
+                new SortAction(SortField.PRODUCTION_YEAR, true)));
+        menu.addChild(yearSortMenu);
 
         return menu;
     }

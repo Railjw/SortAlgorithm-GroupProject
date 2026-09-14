@@ -6,9 +6,6 @@ import java.util.List;
 
 public class ConsoleWriter {
 
-    private static final String BORDER = "----------------------------------------------------------";
-    private static final String HEADER = "|  №  | Model                | Power    | Production Year|";
-
     public static void print(List<Car> cars) {
         print(cars, 0, cars.size());
     }
@@ -31,17 +28,39 @@ public class ConsoleWriter {
             return;
         }
 
-        System.out.println(BORDER);
-        System.out.println(HEADER);
-        System.out.println(BORDER);
+        int colNo = Math.max(2, String.valueOf(end).length());   // "№" или номер
+        int colModel = "Model".length();
+        int colPower = "Power".length();
+        int colYear = "Production Year".length();
 
         for (int i = start; i < end; i++) {
             Car car = cars.get(i);
-            System.out.printf("| %3d | %-29s | %8d | %18d |%n",
-                    i + 1, car.getModel(), car.getPower(), car.getProductionYear());
+            colModel = Math.max(colModel, car.getModel().length());
+            colPower = Math.max(colPower, String.valueOf(car.getPower()).length());
+            colYear = Math.max(colYear, String.valueOf(car.getProductionYear()).length());
         }
 
-        System.out.println(BORDER);
+        String border = "-".repeat(colNo + colModel + colPower + colYear + 13);
+
+        String header = String.format(
+                "| %-" + colNo + "s | %-" + colModel + "s | %-" + colPower + "s | %-" + colYear + "s |",
+                "№", "Model", "Power", "Production Year");
+
+        System.out.println(border);
+        System.out.println(header);
+        System.out.println(border);
+
+        for (int i = start; i < end; i++) {
+            Car car = cars.get(i);
+            System.out.printf(
+                    "| %-" + colNo + "d | %-" + colModel + "s | %" + colPower + "d | %" + colYear + "d |%n",
+                    i + 1,
+                    car.getModel(),
+                    car.getPower(),
+                    car.getProductionYear());
+        }
+
+        System.out.println(border);
         System.out.printf("Showing: %d of %d cars (positions %d-%d)%n%n",
                 end - start, cars.size(), start + 1, end);
     }
