@@ -68,7 +68,8 @@ public class CustomArrayList<T> implements List<T> {
     @Override
     public boolean add(T t) {
         if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+            int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
+            elements = Arrays.copyOf(elements, newCapacity);
         }
         elements[size++] = t;
         return true;
@@ -160,7 +161,8 @@ public class CustomArrayList<T> implements List<T> {
     public void add(int index, T element) {
         if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+            int newCapacity = elements.length == 0 ? 10 : elements.length * 2;
+            elements = Arrays.copyOf(elements, newCapacity);
         }
         System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;
@@ -200,7 +202,19 @@ public class CustomArrayList<T> implements List<T> {
     public ListIterator<T> listIterator(int index) { return null; }
 
     @Override
-    public List<T> subList(int fromIndex, int toIndex) { return null; }
+    public List<T> subList(int fromIndex, int toIndex) {
+        if (fromIndex < 0 || toIndex > size || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException(
+                    "fromIndex: " + fromIndex + ", toIndex: " + toIndex + ", size: " + size
+            );
+        }
+
+        List<T> subList = new CustomArrayList<>();
+        for (int i = fromIndex; i < toIndex; i++) {
+            subList.add((T) elements[i]);
+        }
+        return subList;
+    }
 
     @Override
     public String toString() {
