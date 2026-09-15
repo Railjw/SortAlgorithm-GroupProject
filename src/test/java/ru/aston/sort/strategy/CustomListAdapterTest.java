@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import static org.junit.jupiter.api.Assertions.*;
-import ru.aston.CustomCollection.CustomListAdapter;
+import ru.aston.customcollection.CustomListAdapter;
 
 public class CustomListAdapterTest {
     @Test

@@ -1,7 +1,7 @@
 package ru.aston.io;
 
 import ru.aston.model.Car;
-import ru.aston.CustomCollection.ListFactory;
+import ru.aston.customcollection.ListFactory;
 import ru.aston.io.reader.ConsoleReader;
 import ru.aston.io.reader.CarFileReader;
 import ru.aston.io.writer.ConsoleWriter;
